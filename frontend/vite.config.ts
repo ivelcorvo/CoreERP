@@ -2,17 +2,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-const BASE_PATH = process.env.NODE_ENV === 'production' 
-  ? '/nome-do-seu-repo/' 
-  : '/';
-
 export default defineConfig({
   plugins: [react()],
-  base: BASE_PATH,
+  //  O valor real virá do CI/CD.
+  base: '/', 
   server: {
     port: 3000,
     proxy: {
-      // CORREÇÃO CRUCIAL: Use o nome do serviço 'backend'
+      // O proxy interno do Docker está correto
       '/api': 'http://backend:3001', 
     }
   },

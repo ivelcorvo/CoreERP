@@ -21,10 +21,13 @@ jobs:
         run: |
           cd frontend
           npm install
-          npm run build
+          # CORREÇÃO: Adiciona --base=/CoreERP/ ao comando de build
+          # Isso é o que resolve o erro 404 no GitHub Pages
+          npm run build -- --base=/CoreERP/ 
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_PAGES_DEPLOY_COREERP }}
+          # É mais seguro usar o token padrão, que tem as permissões necessárias
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frontend/dist
