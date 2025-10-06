@@ -30,3 +30,4 @@ mongoose.connect(mongoUri)
     console.error('❌ Erro de conexão com o MongoDB:', error);
     process.exit(1);
   });
+  
