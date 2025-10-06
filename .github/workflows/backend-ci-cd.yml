@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Trigger Render Deploy Hook
         # O segredo RENDER_DEPLOY_HOOK deve ser configurado no GitHub Secrets
-        run: curl -X POST ${{ secrets.TOKEN_DEPLOY_RENDER_COREERP }}
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
