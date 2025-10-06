@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # 1. Backend Service (Node/Express)
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    env_file:
+      - .env # Carrega MONGO_URI
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules # Evita conflito de node_modules
+    ports:
+      - "3001:3001" # Porta do Express
+
+  # 2. Frontend Service (Vite/React)
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000" # Porta do Vite Dev Server
+    working_dir: /usr/src/app
+    environment:
+      # Essencial para Hot Reload no Docker/Windows
+      - CHOKIDAR_USEPOLLING=true
+    command: tail -f /dev/null

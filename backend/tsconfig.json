@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    // ------------------------------------
+    // ARQUITETURA ESSENCIAL (Corrigindo o erro .ts)
+    // ------------------------------------
+    "module": "NodeNext",             // Corresponde ao "type": "module" no package.json
+    "moduleResolution": "NodeNext",   // VITAL para que o Node encontre os módulos corretos
+    "esModuleInterop": true,        // CRUCIAL para importar bibliotecas CommonJS (express, dotenv) com 'import'
+    "isolatedModules": true,        // Mantemos, pois é boa prática de TS
+    
+    // ------------------------------------
+    // FILE PATHS (Recomendado ativar)
+    // ------------------------------------
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // ------------------------------------
+    // OUTRAS OPÇÕES
+    // ------------------------------------
+    "target": "es2020",             // Uma versão moderna do JS
+    "strict": true,
+    "skipLibCheck": true,
+    
+    // Removido: 'verbatimModuleSyntax' e 'moduleDetection: "force"'
+    // Eles causam o erro 'ERR_UNKNOWN_FILE_EXTENSION' no seu setup atual.
+    
+    // Você pode remover outras opções de estilo se não as estiver usando:
+    // "noUncheckedIndexedAccess": true,
+    // "exactOptionalPropertyTypes": true,
+  },
+  "include": ["src/**/*"]
+}

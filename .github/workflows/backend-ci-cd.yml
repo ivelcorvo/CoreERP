@@ -1,0 +1,17 @@
+# .github/workflows/backend-ci-cd.yml
+name: Backend CI/CD (Render)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'backend/**' 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trigger Render Deploy Hook
+        # O segredo RENDER_DEPLOY_HOOK deve ser configurado no GitHub Secrets
+        run: curl -X POST ${{ secrets.TOKEN_DEPLOY_RENDER_COREERP }}
