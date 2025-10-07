@@ -13,6 +13,7 @@ services:
       - /usr/src/app/node_modules # Evita conflito de node_modules
     ports:
       - "3001:3001" # Porta do Express
+    command: tail -f /dev/null 
 
   # 2. Frontend Service (Vite/React)
   frontend:
