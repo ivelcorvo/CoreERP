@@ -11,7 +11,7 @@ function App() {
       .then(data => setStatus(data.message + ' DB: ' + data.database))
       .catch((err) => setStatus('Erro ao conectar com o Backend.' + err.message));
   }, []);
-
+ 
   return (
     <div>
       <h1>Status Fullstack</h1>
